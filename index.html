@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퍼센트 계산기</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <style>
+        h1 {
+            text-align: center;
+            margin: 50px;
+            font-weight: bold;
+        }
+
+        .calculator {
+            margin: 30px auto;
+            text-align: center;
+            border: solid rgb(41, 41, 41) 2px;
+            border-radius: 5px;
+            background-color: rgb(231, 246, 252);
+            width: 90%;
+        }
+
+        .input-box {
+            width: 120px;
+        }
+
+        .input-box2 {
+            width: 60px;
+        }
+
+        main{
+            text-align: center;
+            
+        }
+
+        button {
+            margin: 30px;
+        }
+
+        .answer{
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>퍼센트 계산기</h1>
+    </header>
+
+    <main>
+        <div class="calculator">
+            <input type="text" class="input-box ig1" id="in1"> 의 
+            <input type="text" class="input-box2 ig1" id="in2"> % = 
+            <span class="ans1 answer">00</span>
+            <button class="btn1 btn btn-dark">Enter</button>
+        </div>
+        
+        <div class="calculator">
+            <span class="ans2 answer">00</span> 의 
+            <input type="text" class="input-box2 ig2" id="in3"> % = 
+            <input type="text" class="input-box ig2" id="in4">
+            <button class="btn2 btn btn-dark">Enter</button>
+        </div>
+
+        <div class="calculator">
+            <input type="text" class="input-box ig3" id="in5"> 의 
+            <span class="ans3 answer">00</span> % = 
+            <input type="text" class="input-box ig3" id="in6">
+            <button class="btn3 btn btn-dark">Enter</button>
+        </div>
+
+        <div class="calculator">
+            <input type="text" class="input-box ig3" id="in7"> 의 
+            <input type="text" class="input-box2 ig3" id="in8"> % 증가 =
+            <span class="ans4 answer">00</span>
+            <button class="btn4 btn btn-dark">Enter</button>
+        </div>
+    </main>
+
+</body>
+
+<script>
+    document.querySelector(".btn1").addEventListener("click", calc1);
+    document.querySelector("#in1").addEventListener("keydown", enter1);
+    document.querySelector("#in2").addEventListener("keydown", enter1);
+    function enter1(e) {
+        if(e.keyCode === 13) calc1();
+    }
+    function calc1() {
+        const a = document.querySelector("#in1");
+        const b = document.querySelector("#in2");
+        if(isNaN(a.value) || isNaN(b.value)) {
+            alert("숫자만 입력하세요");
+            a.value = "";
+            b.value = "";
+        }
+        const res = a.value * 0.01 * b.value;
+        document.querySelector(".ans1").textContent = res;
+    }
+
+
+    document.querySelector(".btn2").addEventListener("click", calc2);
+    document.querySelector("#in3").addEventListener("keydown", enter2);
+    document.querySelector("#in4").addEventListener("keydown", enter2);
+    function enter2(e) {
+        if(e.keyCode === 13) calc2();
+    }
+
+    function calc2() {
+        const a = document.querySelector("#in3");
+        const b = document.querySelector("#in4");
+        if(isNaN(a.value) || isNaN(b.value)) {
+            alert("숫자만 입력하세요");
+            a.value = "";
+            b.value = "";
+        }
+        const res = b.value / a.value * 100;
+        document.querySelector(".ans2").textContent = res;
+    }
+
+
+    document.querySelector(".btn3").addEventListener("click", calc3);
+    document.querySelector("#in5").addEventListener("keydown", enter3);
+    document.querySelector("#in6").addEventListener("keydown", enter3);
+    function enter3(e) {
+        if(e.keyCode === 13) calc3();
+    }
+
+    function calc3() {
+        const a = document.querySelector("#in5");
+        const b = document.querySelector("#in6");
+        if(isNaN(a.value) || isNaN(b.value)) {
+            alert("숫자만 입력하세요");
+            a.value = "";
+            b.value = "";
+        }
+        const res = b.value / a.value * 100;
+        document.querySelector(".ans3").textContent = res;
+    }
+    
+    document.querySelector(".btn4").addEventListener("click", calc4);
+    document.querySelector("#in7").addEventListener("keydown", enter4);
+    document.querySelector("#in8").addEventListener("keydown", enter4);
+    function enter4(e) {
+        if(e.keyCode === 13) calc4();
+    }
+
+    function calc4() {
+        const a = document.querySelector("#in7");
+        const b = document.querySelector("#in8");
+        if(isNaN(a.value) || isNaN(b.value)) {
+            alert("숫자만 입력하세요");
+            a.value = "";
+            b.value = "";
+        }
+        const res = a.value * (b.value * 0.01 + 1);
+        document.querySelector(".ans4").textContent = res;
+    }
+</script>
+
+</html>
